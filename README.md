@@ -80,37 +80,7 @@ python3 go2_record_jump.py --duration 3 --out dry_record   # 3秒記録するだ
 python3 motor_temps.py
 ```
 
-### 2.（任意）自分の機体で FrontJump を記録し直す
-
-**別の機体で記録した軌道を使うと、長時間しゃがみで特定の関節が過熱しやすくなります**（「既知の問題」を参照）。できれば、使う機体で記録し直してください。
-
-```bash
-# 内蔵制御で立っている状態で。BalanceStand → 3秒後に FrontJump → 4秒記録
-python3 go2_record_jump.py --jump --out data/jump02
-python3 -c "from jump_plan import extract_jump; print(extract_jump('data/jump02.npz', 'data/jump02_replay.npz'))"
-python3 -c "from crouch_plan import extract_crouch; print(extract_crouch('data/jump02.npz', 'data/crouch02.npz'))"
-```
-
-### 3.（PC）シミュレーションで確かめる
-
-```bash
-python3 sim_replay_jump.py data/jump01.npz                 # 記録どおり
-python3 sim_replay_jump.py data/jump01.npz --stretch 10    # しゃがみ10倍
-python3 sim_check_jump_plan.py --jumps 3                   # 伏せ→立つ→3回跳ぶ→座る（実機ノードと同じ計画）
-python3 sim_check_jump_plan.py --video jump.mp4
-```
-
-### 4. 吊り下げて、しゃがみだけを試す
-
-ロボットを吊り下げ、しゃがんでも足が床に着かない高さにします。
-
-```bash
-python3 go2_crouch_replay.py                   # ドライラン
-python3 release_sport_mode.py                  # 脚の力が抜ける
-python3 go2_crouch_replay.py --arm             # 11.7秒で終了し、ダンピング
-```
-
-### 5. 床の上でジャンプを再生する
+### 2. 床の上でジャンプを再生する
 
 ```bash
 python3 standdown.py                           # 内蔵制御で伏せる
