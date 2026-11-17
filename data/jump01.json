@@ -1,0 +1,48 @@
+{
+ "args": {
+  "out": "jump01",
+  "duration": 5.0,
+  "check_mode": false,
+  "jump": true,
+  "pre": 3.0,
+  "post": 4.0,
+  "skip_model_check": false
+ },
+ "n_low": 3493,
+ "lowstate_hz": 501.4,
+ "n_sport": 2087,
+ "events": [
+  {
+   "t": 0.0414,
+   "event": "identity_ok",
+   "host": "unitree-jetson-payload"
+  },
+  {
+   "t": 1.0091,
+   "event": "request",
+   "api_id": 1002,
+   "parameter": ""
+  },
+  {
+   "t": 1.0119,
+   "event": "response",
+   "api_id": 1002,
+   "code": 0,
+   "data": ""
+  },
+  {
+   "t": 3.0081,
+   "event": "request",
+   "api_id": 1031,
+   "parameter": "{\"data\": true}"
+  },
+  {
+   "t": 6.0733,
+   "event": "response",
+   "api_id": 1031,
+   "code": 0,
+   "data": ""
+  }
+ ],
+ "joint_order": "SDK: FR(0-2) FL(3-5) RR(6-8) RL(9-11), hip/thigh/calf"
+}
